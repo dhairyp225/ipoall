@@ -1,5 +1,9 @@
 import bcrypt
 import jwt,datetime
+from dotenv import load_dotenv
+import os
+load_dotenv()
+
 
 def user_exists(user_id: int,users_collection) -> bool:
     """
@@ -45,7 +49,7 @@ def verify_jwt_token(token: str, secret_key: str, algorithms: list = ["HS256"]) 
         return None
 
 
-def create_jwt_token(payload: dict, secret_key="vdfuycwbeinhhvq4b6719t3y89n5y340tputh3c mrew    uvygn847ytv798`34yc04tn`y347yvtn1034tyv`n830y4t8-`y4ty0813ytn8y3-t89n4-89177tv80y837t5gyn18ovtuyo3  btg4p   4ny9t]  9n4tu   3[4ty08qvb5y9t  [b34yv-9348]]", algorithm: str = "HS256") -> str:
+def create_jwt_token(payload: dict, secret_key=os.getenv('KEY'), algorithm: str = "HS256") -> str:
     """
     Generates a JWT token.
     
